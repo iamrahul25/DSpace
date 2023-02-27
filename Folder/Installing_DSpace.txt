@@ -5,7 +5,9 @@
 
 2) Update & upgrade
 --> sudo apt-get update
---> sudo apt-get upgrade
+
+*** Note: This is Not Necessary take so much Time to Upgrade. 
+--> sudo apt-get upgrade 
 
 
 3)Java JDK 7 or 8 (OpenJDK or Oracle JDK)
