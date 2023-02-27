@@ -13,19 +13,19 @@ sudo apt-get upgrade
 Install OpenJDK because it open-source
 http://openjdk.java.net/install/
 
---> sudo apt install openjdk-8-jdk
+--> sudo apt install openjdk-8-jdk -y
 
 
 4) Apache Maven 3.0.5 or above (3.3.9+) Java build tool)
 http://maven.apache.org/download.cgi
 
---> sudo apt install maven
+--> sudo apt install maven -y
 
 
 5) Apache Ant 1.8 or later Gava build tool) |
 http://ant.apache.org/
 
---> sudo apt install ant
+--> sudo apt install ant -y
 
 
 6) Relational Database: (PostgreSQL or Oracle) |PostgreSQL 9.4 or later
