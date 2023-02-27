@@ -70,7 +70,7 @@ b) DSpace database in PostgreSQL and
 
 c) Install pgcrypto extension
 
---> psql --usermame=postgres dspace -c "CREATE EXTENSION pgcrypto;"
+--> psql --username=postgres dspace -c "CREATE EXTENSION pgcrypto;"
 
 --> exit
 
