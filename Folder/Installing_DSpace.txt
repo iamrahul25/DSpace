@@ -176,13 +176,13 @@ b) Check which version of Tomcat you need to install according to your JDK versi
 https://tomcat.apache.org/whichversion.html
 
 
-### URL 1: 
+### URL 1: (Not Working) 
 --> sudo wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
 
-### URL 2:
+### URL 2: (Working) 
 --> sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
 
-### URL 3:
+### URL 3: (Working) 
 --> sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.72/bin/apache-tomcat-9.0.72.tar.gz
 
 c) Extracting Tomcat.tar.gz file
