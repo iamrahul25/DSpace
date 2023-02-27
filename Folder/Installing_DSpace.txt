@@ -7,8 +7,7 @@
 --> sudo apt-get update
 
 *** Note: This is Not Necessary take so much Time to Upgrade. 
---> sudo apt-get upgrade 
-
+sudo apt-get upgrade 
 
 3)Java JDK 7 or 8 (OpenJDK or Oracle JDK)
 Install OpenJDK because it open-source
@@ -175,24 +174,16 @@ b) Check which version of Tomcat you need to install according to your JDK versi
 
 https://tomcat.apache.org/whichversion.html
 
-
-### URL 1: (Not Working) 
---> sudo wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
-
-### URL 2: (Working) 
---> sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
-
-### URL 3: (Working) 
 --> sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.72/bin/apache-tomcat-9.0.72.tar.gz
 
 c) Extracting Tomcat.tar.gz file
---> tar -xvzf apache-tomcat-9.0.44.tar.gz
+--> tar -xvzf apache-tomcat-9.0.72.tar.gz
 
-d) Rename apache-tomcat-9.0.44 directory to tomcat only
---> sudo mv apache-tomcat-9.0.44 tomcat
+d) Rename apache-tomcat-9.0.72 directory to tomcat only
+--> sudo mv apache-tomcat-9.0.72 tomcat
 
 e) Delete the Tomcat tar.gz file from opt director
---> sudo rm apache-tomcat-9.0.44.tar.gz
+--> sudo rm apache-tomcat-9.0.72.tar.gz
 
 e) Setup environment variables
 --> sudo gedit /etc/profile
