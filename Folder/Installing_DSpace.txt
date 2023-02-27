@@ -193,7 +193,6 @@ d) Rename apache-tomcat-9.0.44 directory to tomcat only
 
 e) Delete the Tomcat tar.gz file from opt director
 --> sudo rm apache-tomcat-9.0.44.tar.gz
-I
 
 e) Setup environment variables
 --> sudo gedit /etc/profile
