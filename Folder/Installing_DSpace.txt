@@ -43,7 +43,7 @@ https://www.postgresql.org/download/linux/ubuntu/
 7) Check Version of All Softwares 
 
 --> psql -V
---> Isb release -a
+--> lsb_release -a
 --> ant -version
 --> java -version
 --> mvn -version
