@@ -57,9 +57,9 @@ a) Create PostgreSQL User|
 
 --> sudo su postgres
 
---> createuser--username=postgres-no-superuser-pwprompt dspace
+--> createuser --username=postgres --no-superuser --pwprompt dspace
 
---> <password> and <confirm password>
+<password> and <confirm password>
 
 b) DSpace database in PostgreSQL and
 
