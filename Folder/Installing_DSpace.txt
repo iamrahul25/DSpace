@@ -93,7 +93,9 @@ a) Create a DSpace User
 
 --> sudo useradd -m dspace 
 
---> sudo passwd dspace <enter a password for the new user dspace>
+--> sudo passwd dspace 
+<Enter New Password>
+<Retype New Password> 
 
 --> sudo mkdir /dspace
 
