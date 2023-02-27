@@ -42,11 +42,11 @@ https://www.postgresql.org/download/linux/ubuntu/
 
 7) Check Version of All Softwares 
 
---> psql-V
+--> psql -V
 --> Isb release -a
---> ant-version
+--> ant -version
 --> java -version
---> mvn-version
+--> mvn -version
 
 8) Servlet Engine (Apache Tomcat 7 or later, Jetty, Caucho Resin or equivalent)
 This prerequisite need to be install after having the DSpace.
