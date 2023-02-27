@@ -77,8 +77,10 @@ d) Create database on localhost
 --> sudo gedit /etc/postgresql/12/main/pg_hba.conf
 
 And Add this Line: 
+(After Line: 93 or at Line 94 --> # "local" is for Unix domain socket connection only)
 
-local all dspace md5    (At line: 94)
+--> local all dspace md5    
+
 
 e)Restart PostgreSQL
 
