@@ -1,1 +1,109 @@
 Install DSpace: ( https://www.youtube.com/watch?v=kzBgj64yhms )
+
+
+### Commands for Installing DSpace ####
+
+1) Open terminal and Activate the admin mode
+--> sudo su <enter root password>
+
+2) Update & upgrade
+--> sudo apt-get update
+--> sudo apt-get upgrade
+
+
+3)Java JDK 7 or 8 (OpenJDK or Oracle JDK)
+Install OpenJDK because it open-source
+http://openjdk.java.net/install/
+
+--> sudo apt install openjdk-8-jdk
+
+
+4) Apache Maven 3.0.5 or above (3.3.9+) Java build tool)
+http://maven.apache.org/download.cgi
+
+--> sudo apt install maven
+
+
+5) Apache Ant 1.8 or later Gava build tool) |
+http://ant.apache.org/
+
+--> sudo apt install ant
+
+
+6) Relational Database: (PostgreSQL or Oracle) |PostgreSQL 9.4 or later
+
+https://www.postgresql.org/download/linux/ubuntu/
+
+--> sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+--> wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+--> sudo apt-get update
+
+--> sudo apt-get -y install postgresql-12
+
+
+7) Check Version of All Softwares 
+
+--> psql-V
+--> Isb release -a
+--> ant-version
+--> java -version
+--> mvn-version
+
+8) Servlet Engine (Apache Tomcat 7 or later, Jetty, Caucho Resin or equivalent)
+This prerequisite need to be install after having the DSpace.
+
+Step 3 Configure PostgreSQL for DSpace
+
+1) Create PostgreSQL User|
+
+--> sudo su postgres
+
+--> createuser--username=postgres-no-superuser-pwprompt dspace
+
+--> <password> and <confirm password>
+
+2) DSpace database in PostgreSQL and
+
+--> createdb --username=postgres--owner=dspace --encoding=UNICODE-T template0 dspace
+
+
+3) Install pgcrypto extension
+
+--> psql --usermame=postgres dspace -c "CREATE EXTENSION pgcrypto;"
+
+--> exit
+
+4) Create database on localhost
+
+--> sudo gedit jetc/postgresql/13/main/pg.hba.conf
+
+And Add this Line: 
+
+local all dspace md5  (At line: 94)
+
+5)Restart PostgreSQL
+
+--> sudo /etc/init.d/postgresql restart
+
+
+Step 4 | Create a DSpace user & a directory to build DSpace
+
+1) Create a DSpace User
+
+sudo useradd -m dspace 1
+
+sudo passwd dspace enter a password for the new user dspace
+
+sudo mkdir /dspace
+
+sudo chown dspace /dspace
+
+2) Create a directory to build DSpace
+
+sudo mkdir /build
+
+sudo chmod -R 777 /build
+
+cd /bulld
