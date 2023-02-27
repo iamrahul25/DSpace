@@ -74,7 +74,7 @@ c) Install pgcrypto extension
 
 d) Create database on localhost
 
---> sudo gedit /etc/postgresql/13/main/pg_hba.conf
+--> sudo gedit /etc/postgresql/12/main/pg_hba.conf
 
 And Add this Line: 
 
