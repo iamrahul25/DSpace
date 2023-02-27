@@ -1,6 +1,3 @@
-Install DSpace: ( https://www.youtube.com/watch?v=kzBgj64yhms )
-
-
 ### Commands for Installing DSpace ####
 
 1) Open terminal and Activate the admin mode
@@ -54,9 +51,9 @@ https://www.postgresql.org/download/linux/ubuntu/
 8) Servlet Engine (Apache Tomcat 7 or later, Jetty, Caucho Resin or equivalent)
 This prerequisite need to be install after having the DSpace.
 
-Step 3 Configure PostgreSQL for DSpace
+9) Configure PostgreSQL for DSpace
 
-1) Create PostgreSQL User|
+a) Create PostgreSQL User|
 
 --> sudo su postgres
 
@@ -64,46 +61,211 @@ Step 3 Configure PostgreSQL for DSpace
 
 --> <password> and <confirm password>
 
-2) DSpace database in PostgreSQL and
+b) DSpace database in PostgreSQL and
 
 --> createdb --username=postgres--owner=dspace --encoding=UNICODE-T template0 dspace
 
 
-3) Install pgcrypto extension
+c) Install pgcrypto extension
 
 --> psql --usermame=postgres dspace -c "CREATE EXTENSION pgcrypto;"
 
 --> exit
 
-4) Create database on localhost
+d) Create database on localhost
 
 --> sudo gedit jetc/postgresql/13/main/pg.hba.conf
 
 And Add this Line: 
 
-local all dspace md5  (At line: 94)
+local all dspace md5    (At line: 94)
 
-5)Restart PostgreSQL
+e)Restart PostgreSQL
 
 --> sudo /etc/init.d/postgresql restart
 
 
-Step 4 | Create a DSpace user & a directory to build DSpace
+10) Create a DSpace user & a directory to build DSpace
 
-1) Create a DSpace User
+a) Create a DSpace User
 
-sudo useradd -m dspace 1
+--> sudo useradd -m dspace 
 
-sudo passwd dspace enter a password for the new user dspace
+--> sudo passwd dspace <enter a password for the new user dspace>
 
-sudo mkdir /dspace
+--> sudo mkdir /dspace
 
-sudo chown dspace /dspace
+--> sudo chown dspace /dspace
 
-2) Create a directory to build DSpace
+b) Create a directory to build DSpace
 
-sudo mkdir /build
+--> sudo mkdir /build
 
-sudo chmod -R 777 /build
+--> sudo chmod -R 777 /build
 
-cd /bulld
+--> cd /build
+
+
+11) Download & extract DSpace into build director (folder)
+
+a) Open build director & download tar.gz file of latest release
+
+--> sudo su
+--> cd build
+
+--> wget https://github.com/DSpace/DSpace/releases/download/dspace-6.3/dspace-6.3-src-release.tar.gz
+
+b) Extract tar.gz
+
+--> tar -zxf dspace-6.3-src-release.tar.gz
+
+
+12) Add comment tag or remove disturbing build number maven plugin
+
+--> sudo gedit build/dspace-6.3-src-release/dspace-api/pom.xml
+
+Reason why: https://www.mojohaus.org/buildnumber-maven-plugin/usage.html
+
+### Remove this---------------(Line 103 to Line 115)
+
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <version>1.4</version>
+        <executions>
+        <execution>
+        <phase>validate</phase>
+        <goals>
+        <goal>create</goal>
+        </goals>
+    </execution>
+    </executions>
+</plugin>
+
+#-------------------------------
+
+
+13) Install DSpace
+
+--> cd /build/dspace-6.3-src-release
+
+--> sudo mvn -U package
+
+--> cd dspace/target/dspace-installer
+
+--> sudo ant fresh_install
+
+
+
+14) Download, Install and Configure - Tomcat
+
+Download Tomcat in opt directory (folder)
+a) Open opt directory
+--> cd /opt
+
+
+b) Check which version of Tomcat you need to install according to your JDK version & Install and extract Tomcat
+
+https://tomcat.apache.org/whichversion.html
+
+
+### URL 1: 
+--> sudo wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
+
+### URL 2:
+--> sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.44/bin/apache-tomcat-9.0.44.tar.gz
+
+### URL 3:
+--> sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.72/bin/apache-tomcat-9.0.72.tar.gz
+
+c) Extracting Tomcat.tar.gz file
+--> tar -xvzf apache-tomcat-9.0.44.tar.gz
+
+d) Rename apache-tomcat-9.0.44 directory to tomcat only
+--> sudo mv apache-tomcat-9.0.44 tomcat
+
+e) Delete the Tomcat tar.gz file from opt director
+--> sudo rm apache-tomcat-9.0.44.tar.gz
+I
+
+e) Setup environment variables
+--> sudo gedit /etc/profile
+
+Add following lines at the bottom of the file.
+
+###------Add this line-------------------------###
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export CATALINA_HOME=/opt/tomcat
+
+###--------------------------------------------###
+
+
+f) Copy Dspace web apps files to Tomcat folder
+--> sudo cp -r /dspace/webapps/* /opt/tomcat/webapps
+
+
+
+15) Running Tomcat automatically 
+You can set up to start the Tomcat server start automatically at the time of system turn on.
+
+--> sudo gedit /etc/init.d/tomcat
+
+###-----Add following lines in the file--------------###
+
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides: tomcat8
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Start/Stop Tomcat server
+### END INIT INFO
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+start() {
+    sh /opt/tomcat/bin/startup.sh
+}
+
+stop() {
+    sh /opt/tomcat/bin/shutdown.sh
+}
+
+case $1 in
+    start|stop) $1;;
+    restart) stop; start;;
+    *) echo "Run as $0 <start|stop|restart>"; exit 1;;
+esac
+
+###-------------------------------------------------###
+*Save and Close File*
+
+Apply the following commands too:
+
+--> sudo chmod +x /etc/init.d/tomcat
+--> sudo update-rc.d tomcat defaults
+
+Restart Tomcat server and PostgreSQL database
+
+--> sudo service tomcat start
+--> sudo service tomcat stop
+--> sudo service tomcat restart
+
+16) Make an initial administrator account (an e-person) in DSpace:
+
+Apply following command in a terminal: 
+
+--> sudo /dspace/bin/dspace create-administrator
+
+It will ask to enter the email address for the user login.
+Enter an email address (e.g. dspace@localhost).
+Enter First name and surname (e.g. dspace)
+Enter a password.
+
+17) Open DSpace in your browser:
+DSpace has two interfaces: xmlui and jspui. You can load either one 
+
+XMLUI: http://localhost:8080/xmlui
+JSPUP: http://localhost:8080/jspui
