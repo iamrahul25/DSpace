@@ -1,0 +1,15 @@
+Ubuntu 20.04 LTS:         https://releases.ubuntu.com/focal/
+Direct download link:     https://releases.ubuntu.com/focal/ubuntu-20.04.5-desktop-amd64.iso
+
+VM Virtual Box:           https://www.virtualbox.org/wiki/Downloads
+
+
+DSpace Files:
+
+dspace folder:   https://mega.nz/file/wiwXHLhY#uYI0gBg-TkO0b08oJUBVuaT0lzgc3di-oHDgMfx0i0A
+
+opt folder:    https://mega.nz/file/UuYkCKrI#KQ6PjMTBdXttDnXmWauxLvfPnPnWUGs8TnWigIneQEM
+
+build folder:  https://mega.nz/file/R75D0KII#uwvCLHwWCs-0oA_EsnKkWJ78nHtavZ1OABqEDjCVsN4
+
+
