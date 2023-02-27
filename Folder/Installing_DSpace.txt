@@ -108,15 +108,11 @@ b) Create a directory to build DSpace
 
 --> sudo chmod -R 777 /build
 
---> cd /build
-
-
 11) Download & extract DSpace into build director (folder)
 
 a) Open build director & download tar.gz file of latest release
 
---> sudo su
---> cd build
+--> cd /build
 
 --> wget https://github.com/DSpace/DSpace/releases/download/dspace-6.3/dspace-6.3-src-release.tar.gz
 
