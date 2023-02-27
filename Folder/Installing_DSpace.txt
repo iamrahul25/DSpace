@@ -126,7 +126,7 @@ b) Extract tar.gz
 
 12) Add comment tag or remove disturbing build number maven plugin
 
---> sudo gedit build/dspace-6.3-src-release/dspace-api/pom.xml
+--> sudo gedit /build/dspace-6.3-src-release/dspace-api/pom.xml
 
 Reason why: https://www.mojohaus.org/buildnumber-maven-plugin/usage.html
 
@@ -134,15 +134,15 @@ Reason why: https://www.mojohaus.org/buildnumber-maven-plugin/usage.html
 
 <plugin>
     <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-        <version>1.4</version>
-        <executions>
+    <artifactId>buildnumber-maven-plugin</artifactId>
+    <version>1.4</version>
+    <executions>
         <execution>
-        <phase>validate</phase>
-        <goals>
-        <goal>create</goal>
-        </goals>
-    </execution>
+            <phase>validate</phase>
+            <goals>
+                <goal>create</goal>
+            </goals>
+        </execution>
     </executions>
 </plugin>
 
