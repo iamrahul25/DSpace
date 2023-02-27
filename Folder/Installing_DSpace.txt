@@ -63,7 +63,7 @@ a) Create PostgreSQL User|
 
 b) DSpace database in PostgreSQL and
 
---> createdb --username=postgres--owner=dspace --encoding=UNICODE-T template0 dspace
+--> createdb --username=postgres --owner=dspace --encoding=UNICODE -T template0 dspace
 
 
 c) Install pgcrypto extension
