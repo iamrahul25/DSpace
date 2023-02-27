@@ -155,6 +155,7 @@ Reason why: https://www.mojohaus.org/buildnumber-maven-plugin/usage.html
 
 --> cd /build/dspace-6.3-src-release
 
+***---- Take Maximum Time---- ***
 --> sudo mvn -U package
 
 --> cd dspace/target/dspace-installer
