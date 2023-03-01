@@ -1,4 +1,4 @@
-### Commands for Installing DSpace ####
+#### Commands for Installing DSpace #####
 
 1) Open terminal and Activate the admin mode
 --> sudo su <enter root password>
