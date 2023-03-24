@@ -1,3 +1,4 @@
 sudo dnf install gcc-c++ python3 python2 python3-devel python2-devel git gsl gsl-devel qwt-qt5-devel qt5-qtbase-devel gtk3 gtk3-devel gdb valgrind doxygen graphviz ImageMagick python3-sphinx dia texlive texlive-latex texlive-fncychap texlive-capt-of texlive-tabulary texlive-eqparbox texlive-epstopdf texlive-titlesec texlive-framed texlive-dvipng texlive-threeparttable texlive-wrapfig texlive-multirow ImageMagick tcpdump sqlite sqlite-devel libxml2 libxml2-devel uncrustify openmpi openmpi-devel environment-modules 
 
+
 *Packages command required for NS3 install*
